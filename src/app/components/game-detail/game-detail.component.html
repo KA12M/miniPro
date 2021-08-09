@@ -1,0 +1,82 @@
+
+	<!-- Page top section -->
+	<section class="page-top-section set-bg" style="background-image: url(assets/TemIndex/img/page-top-bg/1.jpg)">
+		<div class="page-info">
+			<h2>Product</h2>
+			<div class="site-breadcrumb">
+				<a routerLink="/index">Home</a>  /
+				<a routerLink="/games">Product</a> / 
+				<span>{{detail_product.UserName}}</span>
+			</div>
+		</div>
+	</section>
+	<!-- Page top end-->
+	
+	<!-- Games section -->
+	<section class="games-single-page">
+		<div class="container">
+			
+			<div class="row">
+				<div class="col-xl-9 col-lg-8 col-md-7 game-single-content">
+					<div class="gs-meta">{{detail_game.gVersion}}  /  in <a href="">Games</a></div>
+					<h2 class="gs-title"><img style="width:60px;border-radius:8px;" src="{{detail_game.gIcon}}" alt=""> {{detail_game.gName}}</h2>
+					<h4 >Detail Product <i style="cursor: pointer;" (click)="ShowPipe=!ShowPipe" class="fas" [ngClass]="{'fa-arrow-circle-down': !ShowPipe,'fa-arrow-circle-up':ShowPipe}" ></i></h4>
+					<div class="row">
+						<div *ngIf="ShowPipe==false" class="col-6">
+							<p>
+								{{detail_product.detail}}
+							</p> 
+							<p>{{detail_product.date | date: "dd/mm/yyyy" }}</p>
+						</div>
+						<div *ngIf="ShowPipe==true" class="col-6">
+							<p>
+								{{detail_product.detail | uppercase}}
+							</p> 
+							<p>{{detail_product.date |  date: "fullDate" }}</p>
+						</div>
+						<div class="col-6">
+							<img (click)="ShowImg=!ShowImg" style="width:840px;padding:20px;border-radius:20px;cursor:pointer;" src="{{detail_product.imgGame}}" alt="">
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-lg-4 col-md-5 sidebar game-page-sideber">
+					<div id="stickySidebar">
+						<div class="widget-item">
+							<div class="rating-widget" style="width:290px;height:460px;">
+								<h4 class="widget-title">Contact <i style="cursor: pointer;" (click)="ShowPipe1=!ShowPipe1" class="fas" [ngClass]="{'fa-arrow-circle-down': !ShowPipe1,'fa-arrow-circle-up':ShowPipe1}" ></i></h4>
+								<div *ngIf="ShowPipe1==false">
+									<ul>
+										<li>id<span>{{detail_product.id}}</span></li>
+										<li>Username<span>{{detail_product.UserName}}</span></li>
+										<li>Telephone<span>{{detail_product.tel}}</span></li>
+										<li>Email<span>{{detail_product.email}}</span></li>
+										<li>Facebook<span><a style="font-size: 25px;" target="_blank" href="{{detail_product.facebook}}"><img style="width:40px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png" alt=""></a> </span></li>
+									</ul>
+									<div class="rating">
+										<h5><i>price</i>{{detail_product.Price | currency:" ":"symbol"}}</h5>
+									</div>
+								</div>
+								<div *ngIf="ShowPipe1==true">
+									<ul>
+										<li>id<span>{{detail_product.id | percent}}</span></li>
+										<li>Username<span>{{detail_product.UserName | lowercase}}</span></li>
+										<li>Telephone<span>{{detail_product.tel | percent}}</span></li>
+										<li>Email<span>{{detail_product.email | uppercase}}</span></li>
+										<li>Facebook<span><a style="font-size: 25px;" target="_blank" href="{{detail_product.facebook}}"><img style="width:40px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png" alt=""></a> </span></li>
+									</ul>
+									<div class="rating">
+										<h5><i>price</i>{{detail_product.Price | currency:"THB ":"symbol"}}</h5>
+									</div>
+								</div>
+							</div>
+						</div> 
+					</div>
+				</div>
+			</div>
+			<div *ngIf="ShowImg==true" class="game-single-preview">
+				<img style="width:1445px;animation-duration: 4s;" src="{{detail_product.imgGame}}" alt="">
+			</div>
+		</div>
+	</section>
+	<!-- Games end-->
+ 

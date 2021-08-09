@@ -1,0 +1,95 @@
+<!-- Newsletter section -->
+<section class="newsletter-section">
+    <div class="container">
+      <h2>Contact</h2>
+
+      <!-- <div *ngIf="localUsername.invalid && (localUsername.dirty || localUsername.touched)" style="color: rgb(255, 73, 73);" class="cont-info">
+        <div><i class="fas fa-exclamation-circle"> Please Enter Username</i></div> 
+      </div> -->
+
+      <div *ngIf="localEmail.invalid && (localEmail.dirty || localEmail.touched)" style="color: rgb(255, 73, 73);" class="cont-info">
+        <!-- <div *ngIf="localEmail.errors?.required"><i class="fas fa-exclamation-circle"> Please Enter Email</i></div>  -->
+        <div *ngIf="localEmail.errors?.pattern"><i class="fas fa-exclamation-circle"> Invalid email</i></div> 
+      </div>
+
+      <!-- <div *ngIf="localMessage.invalid && (localMessage.dirty || localMessage.touched)" style="color: rgb(255, 73, 73);" class="cont-info">
+        <div *ngIf="localMessage.errors?.required"><i class="fas fa-exclamation-circle"> Please Enter Message</i></div> 
+      </div>  -->
+
+      <form class="newsletter-form" (ngSubmit)="onSubmit(localForm)" #localForm="ngForm">
+        <input
+          type="text"
+          placeholder="username"
+          [(ngModel)]="contact.username"
+          name="username"
+          #localUsername="ngModel"
+          required 
+        />  
+
+        <input
+          type="email"
+          placeholder="email"
+          [(ngModel)]="contact.email"
+          name="email"
+          #localEmail="ngModel"
+          required
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  
+        />  
+
+        <input 
+          type="text"
+          placeholder="message"
+          [(ngModel)]="contact.message"
+          name="message"
+          #localMessage="ngModel"
+          required
+        /> 
+
+        <br /><br />
+        <button [disabled]="localForm.form.invalid" [ngClass]="{'text-danger': localForm.form.invalid}" class="site-btn" style="color:green;">
+          <i style="font-size:20px;" class="far fa-meh" [ngClass]="{'fa-smile-beam':!localForm.form.invalid}"></i> Submit <img src="assets/TemIndex/img/icons/double-arrow.png" alt="#" />
+        </button>
+      </form>
+    </div>
+  </section>
+  <!-- Newsletter section end --> 
+  
+  <!-- Footer section -->
+  <footer class="footer-section">
+      <div class="container">
+          <div class="footer-left-pic">
+              <img src="assets/TemIndex/img/footer-left-pic.png" alt="">
+          </div>
+          <div class="footer-right-pic">
+              <img style="cursor: pointer;" (click)="goAdm()" src="assets/TemIndex/img/footer-right-pic.png" alt="">
+          </div>
+          <a routerLink="/index" class="footer-logo">
+              <img src="assets/TemIndex/img/logo.png" alt="">
+          </a> 
+          <div class="footer-social d-flex justify-content-center">
+                
+          </div>
+          <div style="color: white;" class="row">
+            <span class="col-12">#Admin Password</span>
+            <span class="col-12">admin01</span>
+            <span class="col-12">1234</span> 
+          </div>
+          <div class="copyright"><a href="">KARM</a> 2021 @ CS24</div>
+      </div>
+  </footer>
+  <!-- Footer section end -->
+  
+  <button *ngIf="Service.isLoginAdmin()==false" class="open-button" onclick="openForm()"><i class="fas fa-sign-in-alt"></i> Admin</button>
+  <button *ngIf="Service.isLoginAdmin()==true" class="open-button" style="background-color:RED;" (click)="LogoutAdmin()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+
+
+  <div class="form-popup" id="myForm">
+  <form (ngSubmit)="loginAdmin()" class="form-container">  
+    <input type="text" placeholder="Admin User" name="inputName" [(ngModel)]="inputName" required> 
+    <input type="password" placeholder="Password" name="inputPass" [(ngModel)]="inputPass" required> 
+    <button type="submit" onclick="closeForm()" class="btn">Login</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+ 

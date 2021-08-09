@@ -1,0 +1,114 @@
+<!-- Page top section -->
+<section class="page-top-section set-bg" style="background-image: url(assets/TemIndex/img/page-top-bg/2.jpg)">
+    <div class="page-info">
+        <h2>Form Game</h2>
+        <div class="site-breadcrumb">
+            <a routerLink="/index">Home</a>  /
+            <span>Form Game</span>
+        </div>
+    </div>
+</section>
+<!-- Page top end-->
+
+<!-- Contact page -->
+<section class="contact-page">
+    <div class="container">	
+        <div class="row">
+            <div class="col-lg-7 order-2 order-lg-1"> 
+                <form class="contact-form" (ngSubmit)="onSubmit()" #localForm="ngForm">
+ 
+                    <input 
+                        type="number" 
+                        [(ngModel)]="game.id"
+                        name="id"
+                        #localid="ngModel"
+                        required placeholder="id"
+                    >
+
+                    <input 
+                        type="text"
+                        [(ngModel)]="game.gName"
+                        name="gName"
+                        #localgName="ngModel"
+                        required placeholder="Game name"
+                    >
+
+                    <input 
+                        type="number"
+                        [(ngModel)]="game.gVersion"
+                        name="gVersion"
+                        #localgVersion="ngModel"
+                        required placeholder="game version"
+                    > 
+
+                    <input 
+                        type="text"
+                        [(ngModel)]="game.gIcon"
+                        name="gIcon"
+                        #localgIcon="ngModel"
+                        required placeholder="Image icon"
+                    >
+                    <div *ngIf="game.gIcon">
+                        <img
+                          style="width:360px;"
+                          src="{{ game.gIcon }}"
+                          alt=""
+                        />
+                    </div>
+
+                    <textarea 
+                        type="text"
+                        [(ngModel)]="game.gRecommend"
+                        name="gRecommend"
+                        #localgRecommend="ngModel" 
+                        placeholder="Details"
+                    ></textarea>
+
+                    <button [disabled]="localForm.form.invalid" [ngClass]="{'text-danger': localForm.form.invalid}" class="site-btn" style="color:green;">
+                        <i style="font-size:20px;" class="far fa-meh" [ngClass]="{'fa-smile-beam':!localForm.form.invalid}"></i>
+                      Add Game<img
+                        src="assets/TemIndex/img/icons/double-arrow.png"
+                        alt="#"
+                      />
+                    </button>
+                </form>
+            </div>
+
+
+            <div class="col-lg-5 order-1 order-lg-2 contact-text text-white">
+                <h3>Form Game</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.....</p>
+                <div class="cont-info">
+                    <div class="ci-icon"><img src="assets/TemIndex/img/icons/location.png" alt=""></div>
+                    <div class="ci-text">ComSci</div>
+                </div>
+                <div class="cont-info">
+                    <div class="ci-icon"><img src="assets/TemIndex/img/icons/phone.png" alt=""></div>
+                    <div class="ci-text">0879454565</div>
+                </div>
+                <div class="cont-info">
+                    <div class="ci-icon"><img src="assets/TemIndex/img/icons/mail.png" alt=""></div>
+                    <div class="ci-text">arm@gmail.com</div>
+                </div>
+
+                <div *ngIf="localid.invalid && (localid.dirty || localid.touched)" style="color: rgb(255, 73, 73);" class="cont-info">
+                    <div *ngIf="localid.errors?.required" class="ci-text"><i class="fas fa-exclamation-circle"> Please Enter Id</i></div> 
+                </div>
+                
+                <div *ngIf="localgName.invalid && (localgName.dirty || localgName.touched)" style="color: rgb(255, 73, 73);" class="cont-info">
+                    <div *ngIf="localgName.errors?.required" class="ci-text"><i class="fas fa-exclamation-circle"> Please Enter Game</i></div> 
+                </div>
+
+                <div *ngIf="localgVersion.invalid && (localgVersion.dirty || localgVersion.touched)" style="color: rgb(255, 73, 73);" class="cont-info">
+                    <div *ngIf="localgVersion.errors?.required" class="ci-text"><i class="fas fa-exclamation-circle"> Please Enter Version</i></div> 
+                </div>
+
+                <div *ngIf="localgIcon.invalid && (localgIcon.dirty || localgIcon.touched)" style="color: rgb(255, 73, 73);" class="cont-info">
+                    <div *ngIf="localgIcon.errors?.required" class="ci-text"><i class="fas fa-exclamation-circle"> Please Enter Image</i></div> 
+                </div>
+
+            </div> 
+        </div>
+    </div>
+</section>
+<!-- Contact page end-->

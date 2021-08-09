@@ -1,0 +1,37 @@
+ 
+
+<!-- Header section -->
+<header class="header-section">
+    <div class="header-warp">
+        <div class="header-social d-flex justify-content-end">
+            <p>KARM</p> 
+        </div>
+        <div class="header-bar-warp d-flex">
+            <!-- site logo -->
+            <a routerLink="/index" class="site-logo">
+                <img src="assets/TemIndex/img/logo.png" alt="">
+            </a>
+            <nav class="top-nav-area w-100">
+                <div class="user-panel"> 
+                    <a *ngIf="Service.isLoginAdmin()==true" routerLink="/admin">Admin Page / </a> 
+                    <a routerLink="/">Home</a> /
+                    <a routerLink="/games">Shop</a> /
+                    <a routerLink="/form/game1">Game</a> /
+                    <a routerLink="/form/game">Product</a> 
+                </div>
+                <!-- Menu -->
+                <ul style="margin-left: -830px;" class="main-menu primary-menu">
+                    <li><a routerLink="/">Home</a>
+                        <ul class="sub-menu">
+                            <li><a routerLink="games">Shop</a></li>  
+                            <li><a routerLink="reviews">Reviews</a></li>  
+                            <li><a routerLink="blog">News</a></li> 
+                        </ul>
+                    </li> 
+                </ul> 
+            </nav>
+        </div>
+    </div>
+</header>
+<!-- Header section end -->
+ 

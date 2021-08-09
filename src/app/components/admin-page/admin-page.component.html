@@ -1,0 +1,161 @@
+
+
+<!-- Page top section -->
+<section class="page-top-section set-bg" style="background-image: url(assets/TemIndex/img/page-top-bg/3.jpg)">
+    <div class="m-lg-4 page-info"> 
+        <h2>Admin Page</h2>
+        <div class="site-breadcrumb">
+            <a routerLink="/index">Home</a> 
+        </div>
+    </div>
+</section>
+<!-- Page top end-->
+ 
+	<div class="form-popup col-3" id="myFormGG">
+		<form id="contact" (submit)="onSub()">
+			<h3>Form Product</h3>  
+			<fieldset>
+			  <input readonly [(ngModel)]="formProduct.id" name="id" type="text">
+			</fieldset>
+			<fieldset>
+			  <input readonly [(ngModel)]="formProduct.GName" name="GName" type="text"> 
+			</fieldset>
+			<fieldset>
+				<input [(ngModel)]="formProduct.imgGame" name="imgGame" placeholder="Image(Link Address)" type="text"> 
+			</fieldset>
+			<fieldset *ngIf="formProduct.imgGame">
+				<img style="width:360px;height:240px;" src="{{formProduct.imgGame}}" alt="">
+			</fieldset>
+			<fieldset>
+			  <input [(ngModel)]="formProduct.Price" maxlength="4" name="Price" placeholder="Price" type="text"> 
+			</fieldset>
+			<fieldset>
+			  <textarea [(ngModel)]="formProduct.detail" name="detail" placeholder="detail"></textarea>
+			</fieldset>
+			<fieldset>
+				<input [(ngModel)]="formProduct.UserName" name="UserName" placeholder="Username" type="text"> 
+			</fieldset>
+			<fieldset>
+			  <input [(ngModel)]="formProduct.email" name="email" placeholder="Email" type="text"> 
+			</fieldset>
+			<fieldset>
+			  <input [(ngModel)]="formProduct.facebook" name="facebook" placeholder="Facebook Link" type="text"> 
+			</fieldset>
+			<fieldset>
+			  <input [(ngModel)]="formProduct.tel" name="tel" placeholder="Telephone" type="text"> 
+			</fieldset>
+			<fieldset> 
+			  <button type="submit" onclick="closeFormGG()">Save</button>
+			</fieldset>
+		  </form> 
+	</div>
+
+<section class="blog-page">
+  
+    <div class="row">  
+			<div class="wrap-table100 col-12">
+				<div class="table100">
+					<h2 class="headdd">Product</h2>
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th >Date</th>
+								<th >Product Id</th>
+								<th >Game</th>
+								<th >Username</th>
+								<th >Email</th>
+								<th >Telephone</th>
+								<th >Detail</th>
+								<th >Price</th>
+								<th >Image</th>
+								<th >{{Service._product.length}} Count</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="bodyCon" *ngFor="let item of Service._product">
+								<td class="col-1">{{item.date | date: "medium"}}</td>
+								<td class="col-1">{{item.id}}</td>
+								<td class="col-1">{{item.GName}}</td>
+								<td class="col-1">{{item.UserName}}</td>
+								<td class="col-1">{{item.email}}</td>
+								<td class="col-1">{{item.tel}}</td>
+								<td class="col-3">{{item.detail}}</td>
+								<td class="col-1">{{item.Price | currency:" ":"symbol"}}</td>
+								<td class="col-1"><img class="rounded" src="{{item.imgGame}}" alt=""></td>
+								<td >
+                                    <Button type="submit" class="btn btn-warning mr-2" (click)="_formProduct(item)" onclick="openFormGG()"><i class="fas fa-edit"></i></Button>
+                                    <Button type="submit" class="btn btn-danger" (click)="Del(item)"><i class="far fa-trash-alt"></i></Button>
+                                </td>
+							</tr>
+						</tbody>
+						<div *ngIf="Service._product.length==0">
+							<p style="font-size:20px;text-align:center;">No Data</p>
+						</div>
+					</table>
+				</div>
+			</div>
+		</div> 
+		
+		<div class="row">
+			<div class="table100 col-6">
+				<h2 class="headdd">Game</h2>
+				<table>
+					<thead>
+						<tr class="table100-head">
+							<th >id</th>
+							<th >Game</th>
+							<th >Version</th>
+							<th >Image</th>
+							<th >Detail</th> 
+							<th >{{Service._game.length}} Count</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="bodyCon" *ngFor="let item of Service._game">
+							<td >{{item.id}}</td>
+							<td >{{item.gName}}</td>
+							<td >{{item.gVersion}}</td>
+							<td ><img style="width:90px;height:60px;" src="{{item.gIcon }}" alt=""></td>
+							<td class="col-5">{{item.gRecommend}}</td> 
+							<td >
+								<Button type="submit" class="btn btn-danger"(click)="Del(item)"><i class="far fa-trash-alt"></i></Button>
+							</td>
+						</tr>
+					</tbody>
+					<div *ngIf="Service._game.length==0">
+						<p style="font-size:20px;text-align:center;">No Data</p>
+					</div>
+				</table>
+			</div> 
+
+			<div class="table100 col-6">
+				<h2 class="headdd">Contact</h2>
+				<table>
+					<thead>
+						<tr class="table100-head">
+							<th >id</th>
+							<th >Username</th>
+							<th >Email</th>
+							<th class="col-4">Message</th> 
+							<th >{{Service._contact.length}} Count</th>
+						</tr>
+					</thead> 
+					<tbody> 
+						<tr class="bodyCon" *ngFor="let item of Service._contact">
+							<td >{{item.id}}</td>
+							<td >{{item.username}}</td>
+							<td >{{item.email}}</td>
+							<td class="col-4">{{item.message}}</td> 
+							<td >
+								<Button type="submit" class="btn btn-danger"(click)="Del(item)"><i class="far fa-trash-alt"></i></Button>
+							</td>
+						</tr>
+					</tbody>
+					<div *ngIf="Service._contact.length==0">
+						<p style="font-size:20px;text-align:center;">No Data</p>
+					</div>
+				</table>
+			</div>
+		</div>		
+  
+</section>

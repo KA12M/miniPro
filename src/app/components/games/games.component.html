@@ -1,0 +1,100 @@
+
+<!-- Page top section -->
+<section class="page-top-section set-bg" style="background-image: url(assets/TemIndex/img/page-top-bg/1.jpg)">
+    <div class="page-info">
+        <h2>Product</h2>
+        <div class="site-breadcrumb">
+            <a routerLink="/index">Home</a>  /
+            <span>Product</span>
+        </div>
+    </div>
+</section>
+<!-- Page top end-->
+  
+
+<!-- Games section -->
+<section class="games-section">
+    <div class="container">  
+        <ul class="blog-filter"> 
+            <li class="dropdown-title" style="margin-right: 4px;color:#fff;"><a class="btn" [ngClass]="{'btnfil-active': filterValue=='All'}" (click)="filterValue='All'" (click)="ChooseFilter()">All</a></li>
+            <li *ngFor="let item of Service._game">
+                <a [ngClass]="{'btnfil-active': filterValue==item.gName}" type="button" routerLink="/games" class="btn" (click)="filterValue=item.gName" (click)="ChooseFilter()">{{item.gName}}</a>
+            </li>
+        </ul>
+        <div class="row">
+            <div class="col-xl-7 col-lg-8 col-md-7">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6" *ngFor="let item of ShowProduct;">
+                        <div class="game-item">
+                            <div *ngFor="let icon of Service._game">
+                                <img *ngIf="item.GName==icon.gName" src="{{icon.gIcon}}" style="width:192ox;" alt="#">
+                            </div>
+                            <h5>User : {{item.UserName}}</h5> 
+                            <h5>{{item.Price | currency:"THB ":"symbol"}}</h5>
+                            <a routerLink="" (click)="ShowDetail(item)" class="read-more">View Detail  <img src="assets/TemIndex/img/icons/double-arrow.png" alt="#"/></a>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="col-xl-3 col-lg-4 col-md-5 sidebar game-page-sideber">
+                <div id="stickySidebar">
+                    <div class="widget-item">
+                        <div class="categories-widget">
+                            <h4 class="widget-title">categories</h4>
+                            <ul>
+                                <li><a routerLink="/index">Games</a></li>
+                                <li><a routerLink="/index">Gaming Tips & Tricks</a></li>
+                                <li><a routerLink="/index">Online Games</a></li>
+                                <li><a routerLink="/index">Team Games</a></li>
+                                <li><a routerLink="/index">Community</a></li>
+                                <li><a routerLink="/index">Uncategorized</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="widget-item">
+                        <div class="categories-widget">
+                            <h4 class="widget-title">platform</h4>
+                            <ul>
+                                <li><a routerLink="/index">Xbox</a></li>
+                                <li><a routerLink="/index">X box 360</a></li>
+                                <li><a routerLink="/index">Play Station</a></li>
+                                <li><a routerLink="/index">Play Station VR</a></li>
+                                <li><a routerLink="/index">Nintendo Wii</a></li>
+                                <li><a routerLink="/index">Nintendo Wii U</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="widget-item">
+                        <div class="categories-widget">
+                            <h4 class="widget-title">Genre</h4>
+                            <ul>
+                                <li><a routerLink="/index">Online</a></li>
+                                <li><a routerLink="/index">Adventure</a></li>
+                                <li><a routerLink="/index">S.F.</a></li>
+                                <li><a routerLink="/index">Strategy</a></li>
+                                <li><a routerLink="/index">Racing</a></li>
+                                <li><a routerLink="/index">Shooter</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Games end-->
+
+
+<!-- Featured section -->
+<section class="featured-section">
+    <div class="featured-bg set-bg" style="background-image:url('assets/TemIndex/img/featured-bg.jpg')"></div>
+    <div class="featured-box">
+        <div class="text-box">
+            <div class="top-meta">11.11.18  /  in <a routerLink="/index">Games</a></div>
+            <h3>The game you’ve been waiting  for is out now</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vestibulum posuere porttitor justo id pellentesque. Proin id lacus feugiat, posuere erat sit amet, commodo ipsum. Donec pellentesque vestibulum metus...</p>
+            <a routerLink="/index" class="read-more">Read More <img src="assets/TemIndex/img/icons/double-arrow.png" alt="#"/></a>
+        </div>
+    </div>
+</section>
+<!-- Featured section end-->
